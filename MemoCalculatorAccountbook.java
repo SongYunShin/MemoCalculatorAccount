@@ -19,7 +19,7 @@ public class simplememo extends JPanel{
             DefaultTableModel model = new DefaultTableModel(colNames, 0);
             table = new JTable(model);
             table.addMouseListener(new JTableMouseListener());
-            scrollPane = new JScrollPane(table);              // 테이블에 스크롤 생기게 하기
+            scrollPane = new JScrollPane(table);        // 테이블에 스크롤 생기게 하기
             scrollPane.setSize(500, 200);
             add(scrollPane);        
             initialize();    
