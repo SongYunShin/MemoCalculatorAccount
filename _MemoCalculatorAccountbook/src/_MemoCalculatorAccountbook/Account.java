@@ -11,13 +11,17 @@ class Account extends JPanel{
 	JButton updateButton = new JButton("수정");
 	JButton deleteButton = new JButton("삭제");	
 	
+	String record[] = {"날짜", "항목", "가격"};
+	DefaultTableModel model = new DefaultTableModel (record, 0);
+	JTable table = new JTable(model);
+	
 	Account() {
 		
 		JPanel table_panel = new JPanel();
-		String record[] = {"날짜", "항목", "가격"};
+		//String record[] = {"날짜", "항목", "가격"};
 		
-		DefaultTableModel model = new DefaultTableModel (record, 0);
-		JTable table = new JTable(model);
+		//DefaultTableModel model = new DefaultTableModel (record, 0);
+		//JTable table = new JTable(model);
 		
 		table_panel.add(new JScrollPane(table));
 				
@@ -29,15 +33,26 @@ class Account extends JPanel{
 		
 		add(button_panel, BorderLayout.PAGE_END);
 		
+		update(updateButton);
+		cancel(deleteButton);
 		
-		deleteButton.addActionListener(new SecondButtonActionListener(table, updateButton, deleteButton));
-		updateButton.addActionListener(new FirstButtonActionListener(table, updateButton, deleteButton));
+		//deleteButton.addActionListener(new SecondButtonActionListener(table, updateButton, deleteButton));
+		//updateButton.addActionListener(new FirstButtonActionListener(table, updateButton, deleteButton));
 
 	}
-
-	private void setLayout(Object object) {
-		// TODO Auto-generated method stub
+	
+	JButton update(JButton updateButton) {
 		
+		updateButton.addActionListener(new FirstButtonActionListener(table, updateButton, deleteButton));
+
+		return updateButton;
+	}
+	
+	JButton cancel(JButton deleteButton) {
+		
+		deleteButton.addActionListener(new SecondButtonActionListener(table, updateButton, deleteButton));
+
+		return deleteButton;
 	}
 	
 	
